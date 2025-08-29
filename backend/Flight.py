@@ -1,12 +1,11 @@
 import os
-from flask import Flask, request, jsonify
+from flask import request, jsonify, Flask
 import requests
 
 app = Flask(__name__)
 
-AMADEUS_API_KEY = os.getenv("AMADEUS_API_KEY")
-AMADEUS_API_SECRET = os.getenv("AMADEUS_API_SECRET")
-
+AMADEUS_API_KEY = 'U9lDD1GzuDOrOtJaRqA9KnaoHAqSVY3K'
+AMADEUS_API_SECRET = 'o6I2vKfwLKrHjFUu'
 TOKEN_URL = "https://test.api.amadeus.com/v1/security/oauth2/token"
 FLIGHT_OFFERS_URL = "https://test.api.amadeus.com/v2/shopping/flight-offers"
 
@@ -54,4 +53,4 @@ def search_flights():
     return jsonify(response.json())
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5000, debug=True)
+    app.run(host="0.0.0.0", port=5001, debug=True)
