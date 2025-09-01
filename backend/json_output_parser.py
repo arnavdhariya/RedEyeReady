@@ -1,6 +1,6 @@
 import json
 
-def get_data_from_json(data_original: str) -> dict:
+def get_data_from_json(data_original: json) -> dict:
     with open(data_original) as json_file:
         return json.load(json_file)
 
