@@ -5,7 +5,7 @@ def url_maker(dep_code, dep_date, arrival_loc, num_adults):
 
 def get_requests():
     while True:
-        date = input("Enter date of flight in YYYY-MM-DD or Q to quit: ")
+        date = input("Enter date of flight in YYYY-MM-DD or Q to quit:ap ")
         if date == "Q":
             break
         dep_code = input("Enter departure code: ")

@@ -50,3 +50,17 @@ def get_duration(segment: dict) -> str:
 def get_price(offer: dict) -> str:
     price = offer.get("price", {})
     return price.get("total")
+
+def no_stop_condition(data: list) -> list:
+    copied_data = data.copy()
+    for i in range(len(data)):
+        if data[i]['stops'] != 0:
+            del copied_data[i]
+    return copied_data
+
+def max_price_filter(data: list, max_price: int) -> list:
+    copied_data = data.copy()
+    for i in range(len(data)):
+        if data[i]['price'] > max_price:
+            del copied_data[i]
+    return copied_data
