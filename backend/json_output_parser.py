@@ -50,7 +50,21 @@ def get_duration(segment: dict) -> str:
 def get_price(offer: dict) -> str:
     price = offer.get("price", {})
     return price.get("total")
-
+def get_cabin_class(offer:dict):
+    cabins = []
+    for traveler in offer.get("travelerPricings", []):
+        for fare_detail in traveler.get("fareDetailsBySegment", []):
+            cabin = fare_detail.get("cabin")
+            if cabin:
+                cabins.append(cabin)
+    return list(set(cabins))
+def get_amenities(offer:dict):
+    amenities_values = {}
+    for traveler in offer.get("travelerPricings", []):
+        for fare_detail in traveler.get("fareDetailsBySegment", []):
+            for amenities in fare_detail.get("amenities"):
+                amenities_values[amenities.get("amenityType")] = ("amenityDescription", amenities.get("isChargeable"))
+    return amenities_values
 def no_stop_condition(data: list) -> list:
     copied_data = data.copy()
     for i in range(len(data)):

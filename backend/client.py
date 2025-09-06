@@ -13,6 +13,7 @@ def get_requests():
         number_of_adults = int(input("Enter number of adults: "))
         url = url_maker(dep_code, date, location, number_of_adults)
         response = requests.get(url)
+        print(response.json())
         print(jsp.extract_features(response.json()))
 
 if __name__ == "__main__":
